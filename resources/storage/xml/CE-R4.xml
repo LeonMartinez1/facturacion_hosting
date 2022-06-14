@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/ComercioExterior11 http://www.sat.gob.mx/sitio_internet/cfd/ComercioExterior11/ComercioExterior11.xsd" xmlns:cce11="http://www.sat.gob.mx/ComercioExterior11" Version="4.0" Serie="R" Folio="4" Fecha="2022-03-05T02:59:21" Sello="ErBMXZSqiAQ64KPH25Q2ugIFiP3rV1SOx9FOLD/T+5x6PfFv8V/PHkOIwM4nS8RwxypPC+0q353wqJs+o0SzIW2jIjUcF+CO4QBrmf/T0GJ2vIz0gsTxfznPbrwQtvLXAPVp1o+5pdCqi9Cl20Y8+MXdVNJqLZ3Bwmm8MgE8y7tzSkjD+8SRpN1MlROrSWFG+r6nlHhbLjTC9TRkfwSTkdVd2PjQpOkoo4Hb+9IZhP0tY1YEKtUETa5rzho/RPy+Ctea9cs8uowB4I/dM5kwR20CJZMQjNrkg10kVYADU21A/TU1oivLE8iaUXqeFDkH3IfMjzc9KcdEGKsvnjokSg==" NoCertificado="30001000000400002434" Certificado="MIIFuzCCA6OgAwIBAgIUMzAwMDEwMDAwMDA0MDAwMDI0MzQwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWRpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMTkwNjE3MTk0NDE0WhcNMjMwNjE3MTk0NDE0WjCB4jEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gWElRQjg5MTExNlFFNDEeMBwGA1UEBRMVIC8gWElRQjg5MTExNk1HUk1aUjA1MR4wHAYDVQQLExVFc2N1ZWxhIEtlbXBlciBVcmdhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCN0peKpgfOL75iYRv1fqq+oVYsLPVUR/GibYmGKc9InHFy5lYF6OTYjnIIvmkOdRobbGlCUxORX/tLsl8Ya9gm6Yo7hHnODRBIDup3GISFzB/96R9K/MzYQOcscMIoBDARaycnLvy7FlMvO7/rlVnsSARxZRO8Kz8Zkksj2zpeYpjZIya/369+oGqQk1cTRkHo59JvJ4Tfbk/3iIyf4H/Ini9nBe9cYWo0MnKob7DDt/vsdi5tA8mMtA953LapNyCZIDCRQQlUGNgDqY9/8F5mUvVgkcczsIgGdvf9vMQPSf3jjCiKj7j6ucxl1+FwJWmbvgNmiaUR/0q4m2rm78lFAgMBAAGjHTAbMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBCwUAA4ICAQBcpj1TjT4jiinIujIdAlFzE6kRwYJCnDG08zSp4kSnShjxADGEXH2chehKMV0FY7c4njA5eDGdA/G2OCTPvF5rpeCZP5Dw504RZkYDl2suRz+wa1sNBVpbnBJEK0fQcN3IftBwsgNFdFhUtCyw3lus1SSJbPxjLHS6FcZZ51YSeIfcNXOAuTqdimusaXq15GrSrCOkM6n2jfj2sMJYM2HXaXJ6rGTEgYmhYdwxWtil6RfZB+fGQ/H9I9WLnl4KTZUS6C9+NLHh4FPDhSk19fpS2S/56aqgFoGAkXAYt9Fy5ECaPcULIfJ1DEbsXKyRdCv3JY89+0MNkOdaDnsemS2o5Gl08zI4iYtt3L40gAZ60NPh31kVLnYNsmvfNxYyKp+AeJtDHyW9w7ftM0Hoi+BuRmcAQSKFV3pk8j51la+jrRBrAUv8blbRcQ5BiZUwJzHFEKIwTsRGoRyEx96sNnB03n6GTwjIGz92SmLdNl95r9rkvp+2m4S6q1lPuXaFg7DGBrXWC8iyqeWE2iobdwIIuXPTMVqQb12m1dAkJVRO5NdHnP/MpqOvOgLqoZBNHGyBg4Gqm4sCJHCxA1c8Elfa2RQTCk0tAzllL4vOnI1GHkGJn65xokGsaU4B4D36xh7eWrfj4/pgWHmtoDAYa8wzSwo2GVCZOs+mtEgOQB91/g==" FormaPago="99" CondicionesDePago="Condiciones" MetodoPago="PPD" SubTotal="20278.43" Moneda="USD" Total="20278.43" TipoDeComprobante="I" LugarExpedicion="49000" TipoCambio="20.9262" Exportacion="02">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XEXX010101000" Nombre="REY AMARGO, LLC" UsoCFDI="G01" RegimenFiscalReceptor="616" ResidenciaFiscal="USA" DomicilioFiscalReceptor="98033" NumRegIdTrib="123456789"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="50" ClaveUnidad="E48" NoIdentificacion="001323" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="4.5" Importe="225" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="50" ClaveUnidad="E48" NoIdentificacion="001325" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="4.5" Importe="225" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="23" ClaveUnidad="E48" NoIdentificacion="001331" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="6.75" Importe="155.25" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="50" ClaveUnidad="E48" NoIdentificacion="001332" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="4.5" Importe="225" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="50" ClaveUnidad="E48" NoIdentificacion="001329" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="4.5" Importe="225" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="50" ClaveUnidad="E48" NoIdentificacion="001327" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="4.5" Importe="225" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="50" ClaveUnidad="E48" NoIdentificacion="001334" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="4.5" Importe="225" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="25" ClaveUnidad="E48" NoIdentificacion="001410" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="4.7" Importe="117.5" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="25" ClaveUnidad="E48" NoIdentificacion="001409" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="4.7" Importe="117.5" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="85" ClaveUnidad="E48" NoIdentificacion="001339" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="2.3" Importe="195.5" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="370" ClaveUnidad="E48" NoIdentificacion="001340" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="1.9" Importe="703" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="200" ClaveUnidad="E48" NoIdentificacion="001342" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="1.65" Importe="330" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="400" ClaveUnidad="E48" NoIdentificacion="001343" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="1.85" Importe="740" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="400" ClaveUnidad="E48" NoIdentificacion="001344" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="2.15" Importe="860" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="56" ClaveUnidad="E48" NoIdentificacion="001411" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="1.95" Importe="109.2" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="230" ClaveUnidad="E48" NoIdentificacion="001419" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="1.6" Importe="368" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="24" ClaveUnidad="E48" NoIdentificacion="001353" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="26.75" Importe="642" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="30" ClaveUnidad="E48" NoIdentificacion="001355" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="28.35" Importe="850.5" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="20" ClaveUnidad="E48" NoIdentificacion="001356" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="40.6" Importe="812" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="30" ClaveUnidad="E48" NoIdentificacion="001413" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="5.5" Importe="165" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="26" ClaveUnidad="E48" NoIdentificacion="001414" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="3" Importe="78" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="18" ClaveUnidad="E48" NoIdentificacion="001415" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="2.65" Importe="47.7" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="20" ClaveUnidad="E48" NoIdentificacion="001416" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="3.45" Importe="69" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="140" ClaveUnidad="E48" NoIdentificacion="001423" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="6.15" Importe="861" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="180" ClaveUnidad="E48" NoIdentificacion="001424" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="3.9" Importe="702" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="80" ClaveUnidad="E48" NoIdentificacion="001370" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="5.7" Importe="456" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="40" ClaveUnidad="E48" NoIdentificacion="001372" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="9.33" Importe="373.2" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="40" ClaveUnidad="E48" NoIdentificacion="001373" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="10.41" Importe="416.4" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="40" ClaveUnidad="E48" NoIdentificacion="001374" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="9.64" Importe="385.6" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="40" ClaveUnidad="E48" NoIdentificacion="001375" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="9.33" Importe="373.2" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="40" ClaveUnidad="E48" NoIdentificacion="001377" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="9.33" Importe="373.2" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="40" ClaveUnidad="E48" NoIdentificacion="001379" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="3.4" Importe="136" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="36" ClaveUnidad="E48" NoIdentificacion="001422" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="34.6" Importe="1245.6" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="20" ClaveUnidad="E48" NoIdentificacion="001382" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="56.5" Importe="1130" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="20" ClaveUnidad="E48" NoIdentificacion="001383" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="63" Importe="1260" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="16" ClaveUnidad="E48" NoIdentificacion="001384" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="56.5" Importe="904" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="16" ClaveUnidad="E48" NoIdentificacion="001385" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="56.5" Importe="904" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="16" ClaveUnidad="E48" NoIdentificacion="001386" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="56.5" Importe="904" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="16" ClaveUnidad="E48" NoIdentificacion="001387" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="56.5" Importe="904" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="16" ClaveUnidad="E48" NoIdentificacion="001388" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="56.5" Importe="904" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="12" ClaveUnidad="E48" NoIdentificacion="001389" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="14.9" Importe="178.8" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="8" ClaveUnidad="E48" NoIdentificacion="001391" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="9.25" Importe="74" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="8" ClaveUnidad="E48" NoIdentificacion="001420" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="9.25" Importe="74" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="4" ClaveUnidad="E48" NoIdentificacion="001393" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="2.32" Importe="9.28" ObjetoImp="02">
+      <cfdi:Impuestos/>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos>
+    <cfdi:Traslados/>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <cce11:ComercioExterior Version="1.1" TipoOperacion="2" ClaveDePedimento="A1" CertificadoOrigen="0" Incoterm="EXW" Subdivision="0" TipoCambioUSD="20.9262" TotalUSD="20278.43">
+      <cce11:Emisor>
+        <cce11:Domicilio Calle="Calle" Colonia="0215" Localidad="02" Municipio="002" Estado="BCN" Pais="MEX" CodigoPostal="21397"/>
+      </cce11:Emisor>
+      <cce11:Receptor NumRegIdTrib="123456789">
+        <cce11:Domicilio Calle="Calle" NumeroExterior="943" Localidad="Calexico" Municipio="Imperial" Estado="CA" Pais="USA" CodigoPostal="92231-0000"/>
+      </cce11:Receptor>
+      <cce11:Destinatario NumRegIdTrib="273156698" Nombre="Usuario">
+        <cce11:Domicilio Calle="Calle" NumeroExterior="943" Localidad="YUMA" Municipio="Imperial" Estado="AZ" Pais="USA" CodigoPostal="85365-0000"/>
+      </cce11:Destinatario>
+      <cce11:Mercancias>
+        <cce11:Mercancia NoIdentificacion="001323" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="225"/>
+        <cce11:Mercancia NoIdentificacion="001325" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="225"/>
+        <cce11:Mercancia NoIdentificacion="001331" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="155.25"/>
+        <cce11:Mercancia NoIdentificacion="001332" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="225"/>
+        <cce11:Mercancia NoIdentificacion="001329" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="225"/>
+        <cce11:Mercancia NoIdentificacion="001327" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="225"/>
+        <cce11:Mercancia NoIdentificacion="001334" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="225"/>
+        <cce11:Mercancia NoIdentificacion="001410" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="117.5"/>
+        <cce11:Mercancia NoIdentificacion="001409" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="117.5"/>
+        <cce11:Mercancia NoIdentificacion="001339" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="195.5"/>
+        <cce11:Mercancia NoIdentificacion="001340" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="703"/>
+        <cce11:Mercancia NoIdentificacion="001342" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="330"/>
+        <cce11:Mercancia NoIdentificacion="001343" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="740"/>
+        <cce11:Mercancia NoIdentificacion="001344" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="860"/>
+        <cce11:Mercancia NoIdentificacion="001411" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="109.2"/>
+        <cce11:Mercancia NoIdentificacion="001419" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="368"/>
+        <cce11:Mercancia NoIdentificacion="001353" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="642"/>
+        <cce11:Mercancia NoIdentificacion="001355" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="850.5"/>
+        <cce11:Mercancia NoIdentificacion="001356" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="812"/>
+        <cce11:Mercancia NoIdentificacion="001413" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="165"/>
+        <cce11:Mercancia NoIdentificacion="001414" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="78"/>
+        <cce11:Mercancia NoIdentificacion="001415" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="47.7"/>
+        <cce11:Mercancia NoIdentificacion="001416" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="69"/>
+        <cce11:Mercancia NoIdentificacion="001423" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="861"/>
+        <cce11:Mercancia NoIdentificacion="001424" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="702"/>
+        <cce11:Mercancia NoIdentificacion="001370" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="456"/>
+        <cce11:Mercancia NoIdentificacion="001372" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="373.2"/>
+        <cce11:Mercancia NoIdentificacion="001373" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="416.4"/>
+        <cce11:Mercancia NoIdentificacion="001374" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="385.6"/>
+        <cce11:Mercancia NoIdentificacion="001375" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="373.2"/>
+        <cce11:Mercancia NoIdentificacion="001377" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="373.2"/>
+        <cce11:Mercancia NoIdentificacion="001379" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="136"/>
+        <cce11:Mercancia NoIdentificacion="001422" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="1245.6"/>
+        <cce11:Mercancia NoIdentificacion="001382" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="1130"/>
+        <cce11:Mercancia NoIdentificacion="001383" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="1260"/>
+        <cce11:Mercancia NoIdentificacion="001384" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="904"/>
+        <cce11:Mercancia NoIdentificacion="001385" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="904"/>
+        <cce11:Mercancia NoIdentificacion="001386" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="904"/>
+        <cce11:Mercancia NoIdentificacion="001387" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="904"/>
+        <cce11:Mercancia NoIdentificacion="001388" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="904"/>
+        <cce11:Mercancia NoIdentificacion="001389" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="178.8"/>
+        <cce11:Mercancia NoIdentificacion="001391" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="74"/>
+        <cce11:Mercancia NoIdentificacion="001420" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="74"/>
+        <cce11:Mercancia NoIdentificacion="001393" FraccionArancelaria="0101210100" CantidadAduana="1884.960" UnidadAduana="07" ValorUnitarioAduana="1.72" ValorDolares="9.28"/>
+      </cce11:Mercancias>
+    </cce11:ComercioExterior>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

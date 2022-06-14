@@ -1,0 +1,675 @@
+<?php
+include("../../models/catalogs.php"); 
+
+ //$factura = "0000000504";
+
+$res_factura = getFactura($ce);
+
+$xml_generate = satxmlsv33($res_factura,false,"../../resources/storage/xml/","","");
+ 
+//satxmlsv33(false, "", "", "");
+ 
+function satxmlsv33($arr, $edidata = false, $dir="../../resources/storage/xml/", $nodo = "", $addenda = "")
+{
+    global $xml, $cadena_original, $sello, $texto, $ret;
+    error_reporting(E_ALL & ~(E_WARNING | E_NOTICE));
+    satxmlsv33_genera_xml($arr, $edidata, $dir, $nodo, $addenda);
+    satxmlsv33_genera_cadena_original();
+    satxmlsv33_sello($arr);
+    $ret = satxmlsv33_termina($arr, $dir);
+    //echo json_encode($arr);
+    return $ret;
+}
+ 
+function satxmlsv33_genera_xml($arr, $edidata, $dir, $nodo, $addenda)
+{
+    global $xml, $ret;
+    $xml = new DOMdocument("1.0", "UTF-8");
+    satxmlsv33_generales($arr, $edidata, $dir, $nodo, $addenda);
+    satxmlsv33_relacionados($arr, $edidata, $dir, $nodo, $addenda);
+    satxmlsv33_emisor($arr, $edidata, $dir, $nodo, $addenda);
+    satxmlsv33_receptor($arr, $edidata, $dir, $nodo, $addenda);
+    satxmlsv33_conceptos($arr, $edidata, $dir, $nodo, $addenda);
+    satxmlsv33_impuestos($arr, $edidata, $dir, $nodo);
+    satxmlsv33_cce11($arr, $edidata, $dir, $nodo);
+}
+ 
+function satxmlsv33_generales($arr, $edidata, $dir, $nodo, $addenda)
+{
+    global $root, $xml;
+    $root = $xml->createElement("cfdi:Comprobante");
+    $root = $xml->appendChild($root);
+ 
+    satxmlsv33_cargaAtt($root, array(
+        "xmlns:cfdi" => "http://www.sat.gob.mx/cfd/4",
+        "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+        "xsi:schemaLocation" => "http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/ComercioExterior11 http://www.sat.gob.mx/sitio_internet/cfd/ComercioExterior11/ComercioExterior11.xsd",
+        "xmlns:cce11" => "http://www.sat.gob.mx/ComercioExterior11"
+    ));
+
+    $mifecha = date('Y-m-d H:i:s'); 
+    $fecha_acual = strtotime ( '-7 hour' , strtotime ($mifecha) ) ;
+    $fecha_acual = date ( 'Y-m-d H:i:s' , $fecha_acual); 
+ 
+    satxmlsv33_cargaAtt($root, array(
+        "Version" => "4.0",
+        "Serie"=>$arr['serie'],
+        "Folio"=>$arr['folio'],
+        //"Fecha" => date("Y-m-d") . "T" . date("H:i:s"),
+        "Fecha"=>str_replace(" ","T", $fecha_acual),
+        "Sello" => "@",
+        "NoCertificado" => no_Certificado(),
+        "Certificado" => "@",
+        "FormaPago"=>$arr['forma_pago'],
+        "CondicionesDePago" => "Condiciones",
+        //"Descuento" => "3242.13",
+        "MetodoPago"=>$arr['metodo_pago'],
+        "SubTotal"=>$arr['subtotal'],
+        "Moneda"=>$arr['moneda'],
+        "Total"=>$arr['subtotal'],
+        "TipoDeComprobante"=>$arr['tipoComprobante'],
+        "LugarExpedicion"=>$arr['lugarExpedicion'],
+        "TipoCambio"=>$arr['tipoCambio'],
+        "Exportacion"=>$arr['c_exportacion'],
+    ));
+}
+ 
+function satxmlsv33_relacionados($arr, $edidata, $dir,$nodo,$addenda) {
+    global $root, $xml;
+
+    if ($arr['tipo_relacion'] != 00) 
+    {
+        $cfdis = $xml->createElement("cfdi:CfdiRelacionados");
+        $cfdis = $root->appendChild($cfdis);
+        satxmlsv33_cargaAtt($cfdis, array("TipoRelacion"=>$arr['tipo_relacion']));
+        $cfdi = $xml->createElement("cfdi:CfdiRelacionado");
+        $cfdi = $cfdis->appendChild($cfdi);
+        satxmlsv33_cargaAtt($cfdi, array("UUID"=>$arr['uuid_relacionados']));
+    }
+ 
+}
+function satxmlsv33_emisor($arr, $edidata, $dir,$nodo,$addenda) {
+    global $root, $xml;
+    $emisor = $xml->createElement("cfdi:Emisor");
+    $emisor = $root->appendChild($emisor);
+    satxmlsv33_cargaAtt($emisor, array("Rfc"=>$arr['rfc'],
+                                       "Nombre"=>$arr['emisor'],
+                                       "RegimenFiscal"=>"601",
+                                      )
+                                  );
+  }
+ 
+function satxmlsv33_receptor($arr, $edidata, $dir,$nodo,$addenda) {
+    global $root, $xml;
+    $receptor = $xml->createElement("cfdi:Receptor");
+    $receptor = $root->appendChild($receptor);
+    satxmlsv33_cargaAtt($receptor, array("Rfc"=>$arr['rfc_receptor'],
+                                         "Nombre"=>$arr['nombre_receptor'],
+                                         "UsoCFDI"=>$arr['uso_cfdi'],
+                                         "RegimenFiscalReceptor"=>$arr['regimen_fiscal_rec'],
+                                         "ResidenciaFiscal"=>$arr['complement_export']['clients_fiscal_residency'],
+                                         "DomicilioFiscalReceptor"=>$arr['lugarExpedicion'],
+                                         "NumRegIdTrib"=>$arr['complement_export']['clients_register_number'],
+                                         "RegimenFiscalReceptor"=>"616",
+                          )
+                      );
+    }
+ 
+function satxmlsv33_conceptos($arr, $edidata, $dir,$nodo,$addenda) {
+    global $root, $xml;
+    $conceptos = $xml->createElement("cfdi:Conceptos");
+    $conceptos = $root->appendChild($conceptos);
+    
+    //echo count($arr['detalles']);
+    
+    //for ($i=1; $i<=sizeof(1); $i++) {
+    for ($i=0; $i<count($arr['detalles']); $i++) {
+        
+        $concepto = $xml->createElement("cfdi:Concepto");
+        $concepto = $conceptos->appendChild($concepto);
+        satxmlsv33_cargaAtt($concepto, array(
+                                  "ClaveProdServ" => $arr['detalles'][$i]['c_claveprodserv'],// pendiente
+                                  //"NoIdentificacion"=>"NO123"
+                                  "Cantidad" => $arr['detalles'][$i]['cantidad'],
+                                  "ClaveUnidad" => $arr['detalles'][$i]['clave_unidad'],
+                                  "NoIdentificacion" => $arr['detalles'][$i]['producto_id'],
+                                  "Unidad" => $arr['detalles'][$i]['unidad'],
+                                  "Descripcion" => $arr['detalles'][$i]['descripcion'],
+                                  "ValorUnitario" => $arr['detalles'][$i]['precio_unitario'],
+                                  "Importe"=>$arr['detalles'][$i]['importe'],
+                                  //"Descuento" => "22500.00",
+                                  "ObjetoImp" => $arr['detalles'][$i]['c_objetoimp']
+            )
+        );
+        $impuestos = true; // indicamos si el nodo existirá dentro del XML (true= existe, false = se omite)
+        if ($impuestos == true) 
+        {
+            $impuestos = $xml->createElement("cfdi:Impuestos");
+            $impuestos = $concepto->appendChild($impuestos);
+     
+            $traslados = false;
+            if ($traslados == true) 
+            {
+                if ($arr['detalles'][$i]['iva'] !=0 and $arr['detalles'][$i]['ieps']==0){
+                    $traslados = $xml->createElement("cfdi:Traslados");
+                    $traslados = $impuestos->appendChild($traslados);
+                    $traslado = $xml->createElement("cfdi:Traslado");
+                    $traslado = $traslados->appendChild($traslado);
+                    satxmlsv33_cargaAtt(
+                        $traslado,
+                        array(
+                            "Base" => $arr['detalles'][$i]['importe'],
+                            "Impuesto" => "002",
+                            "TipoFactor" => "Tasa",
+                            "TasaOCuota" => "0.160000",
+                            "Importe" => $arr['detalles'][$i]['iva'],
+                        )
+                    );
+    
+                }elseif($arr['detalles'][$i]['iva'] ==0 and $arr['detalles'][$i]['ieps']!=0){
+    
+                    $traslados = $xml->createElement("cfdi:Traslados");
+                    $traslados = $impuestos->appendChild($traslados);
+                    $traslado = $xml->createElement("cfdi:Traslado");
+                    $traslado = $traslados->appendChild($traslado);
+                    satxmlsv33_cargaAtt(
+                        $traslado,
+                        array(
+                            "Base" => $arr['detalles'][$i]['importe'],
+                            "Impuesto" => "003",
+                            "TipoFactor" => "Tasa",
+                            "TasaOCuota" => "0.080000",
+                            "Importe" => $arr['detalles'][$i]['ieps'],
+                        )
+                    );
+    
+                }
+                
+            }else{
+                $traslados = $xml->createElement("cfdi:Traslados");
+                    $traslados = $impuestos->appendChild($traslados);
+                    $traslado = $xml->createElement("cfdi:Traslado");
+                    $traslado = $traslados->appendChild($traslado);
+                    satxmlsv33_cargaAtt(
+                        $traslado,
+                        array(
+                            "Base" => $arr['detalles'][$i]['importe'],
+                            "Impuesto" => "002",
+                            "TipoFactor" => "Tasa",
+                            "TasaOCuota" => "0.000000",
+                            "Importe" => "0.00",
+                        )
+                    );
+            }
+     
+            $retenciones = false; // indicamos si el nodo existira dentro del XML (true= existe, false = se omite)
+            if ($retenciones == true) 
+            {
+                $retenciones = $xml->CreateElement("cfdi:Retenciones");
+                $retenciones = $impuestos->appendChild($retenciones);
+                $retencion = $xml->CreateElement("cfdi:Retencion");
+                $retencion = $retenciones->appendChild($retencion);
+                satxmlsv33_cargaAtt(
+                    $retencion,
+                    array(
+                        "Base" => "1000.00",
+                        "Importe" => "40.00",
+                        "Impuesto" => "002",
+                        "TasaOCuota" => "0.040000",
+                        "TipoFactor" => "Tasa",
+     
+                    )
+                );
+            }
+        }
+      }
+}
+ 
+function satxmlsv33_impuestos($arr, $edidata, $dir, $nodo)
+{
+ 
+    global $root, $xml, $post;
+ 
+    $impuestos2 = true; // indicamos si el nodo existira dentro del XML (true= existe, false = se omite)
+    if ($impuestos2 == true) {
+
+        for ($i=0; $i<count($arr['detalles']); $i++) {
+            $impo_ieps +=$arr['detalles'][$i]['ieps'];
+
+            $impo_iva +=$arr['detalles'][$i]['iva'];
+
+            //$impo_base +=$arr['detalles'][$i]['importe'];
+        }
+
+        //$impo_ieps +=$arr['detalles'][$i]['ieps'];
+        if ($impo_iva !=0 and $impo_ieps==0){
+
+            $impuesto_total = $impo_iva;
+
+        }elseif($impo_iva==0 and $impo_ieps!=0){
+
+            $impuesto_total = $impo_ieps;
+
+        }
+
+        $impuestos2 = $xml->CreateElement("cfdi:Impuestos");
+        $impuestos2 = $root->appendChild($impuestos2);
+        satxmlsv33_cargaAtt($impuestos2, array(
+            //"TotalImpuestosRetenidos" => "3599.99",
+            //"TotalImpuestosTrasladados" => $impuesto_total,
+            "TotalImpuestosTrasladados" => "0.00",
+ 
+        ));
+        $retenciones2 = false; // indicamos si el nodo existira dentro del XML (true= existe, false = se omite)
+        if ($retenciones2 == true) {
+ 
+            $retenciones2 = $xml->CreateElement("cfdi:Retenciones");
+            $retenciones2 = $impuestos2->appendChild($retenciones2);
+            for ($c = 1; $c <= sizeof(1); $c++) {
+                $retencion2 = $xml->CreateElement("cfdi:Retencion");
+                $retencion2 = $retenciones2->appendChild($retencion2);
+                satxmlsv33_cargaAtt($retencion2, array(
+                    "Importe" => "3599.99",
+                    "Impuesto" => "002",
+                ));
+            }
+        }
+        $traslados2 = false; // indicamos si el nodo existira dentro del XML (true= existe, false = se omite)
+ 
+        if ($traslados2 == true) {
+            $traslados2 = $xml->CreateElement("cfdi:Traslados");
+            $traslados2 = $impuestos2->appendChild($traslados2);
+
+            for ($i=0; $i<count($arr['detalles']); $i++) {
+                $impo_ieps +=$arr['detalles'][$i]['ieps'];
+
+                $impo_iva +=$arr['detalles'][$i]['iva'];
+
+                $impo_base +=$arr['detalles'][$i]['importe'];
+            }
+
+            if ($impo_iva !=0 and $impo_ieps==0){
+
+                $traslado2 = $xml->CreateElement("cfdi:Traslado");
+                $traslado2 = $traslados2->appendChild($traslado2);
+                satxmlsv33_cargaAtt($traslado2, array("Base" => $impo_base,
+                                                      "Importe" => $impuesto_total,
+                                                      "Impuesto" => "002",
+                                                      "TasaOCuota" => "0.160000",
+                                                      "TipoFactor" => "Tasa",
+                                                    )
+                                                );
+
+            }elseif($impo_iva==0 and $impo_ieps!=0){
+
+                $traslado2 = $xml->CreateElement("cfdi:Traslado");
+                $traslado2 = $traslados2->appendChild($traslado2);
+                satxmlsv33_cargaAtt($traslado2, array("Base" => $impo_base,
+                                                      "Importe" => $impuesto_total,
+                                                      "Impuesto" => "003",
+                                                      "TasaOCuota" => "0.080000",
+                                                      "TipoFactor" => "Tasa",
+                                                    )
+                                                );
+
+            }
+        }else{
+
+            for ($i=0; $i<count($arr['detalles']); $i++) {
+
+                $impo_base +=$arr['detalles'][$i]['importe'];
+            }
+
+            $traslados2 = $xml->CreateElement("cfdi:Traslados");
+            $traslados2 = $impuestos2->appendChild($traslados2);
+            $traslado2 = $xml->CreateElement("cfdi:Traslado");
+            $traslado2 = $traslados2->appendChild($traslado2);
+            satxmlsv33_cargaAtt($traslado2, array("Base" => $impo_base,
+                                                    "Importe" => "0.00",
+                                                    "Impuesto" => "002",
+                                                    "TasaOCuota" => "0.000000",
+                                                    "TipoFactor" => "Tasa",
+                                                )
+                                            );
+        }
+    }
+}
+ 
+function satxmlsv33_cce11($arr, $edidata, $dir, $nodo)
+{
+
+    for ($i=0; $i<count($arr['complement_export_articles']); $i++) {
+
+        $impo_baseDll+= $arr['complement_export_articles'][$i]['dollars_value'];
+
+        //$impo_base +=$arr['detalles'][$i]['importe'];
+    }
+ 
+    global $root, $xml;
+    $complemento_cce11 = $xml->createElement("cfdi:Complemento");
+    $complemento_cce11 = $root->appendChild($complemento_cce11);
+    $cce11 = $xml->createElement("cce11:ComercioExterior");
+    $cce11 =  $complemento_cce11->appendChild($cce11);
+    satxmlsv33_cargaAtt($cce11, array(
+        "Version" => "1.1",
+        "MotivoTraslado" => false,
+        "TipoOperacion" => $arr['complement_export']['type_of_operation'],
+        "ClaveDePedimento" => $arr['complement_export']['pediment_key'],
+        "CertificadoOrigen" => $arr['complement_export']['origin_certificate'],
+        "NumCertificadoOrigen" => false,
+        "NumeroExportadorConfiable" => false,
+        "Incoterm" => $arr['complement_export']['incoterm'],
+        "Subdivision" => $arr['complement_export']['subdivision'],
+        "Observaciones" => false,
+        "TipoCambioUSD" => $arr['tipoCambio'],
+        "TotalUSD" => number_format($impo_baseDll, 2, '.', ''),
+ 
+ 
+    ));
+ 
+    $Cemisor = true; // indicamos si el nodo existirá dentro del XML (true= existe, false = se omite)
+    if ($Cemisor == true) {
+        $Cemisor = $xml->createElement("cce11:Emisor");
+        $Cemisor = $cce11->appendChild($Cemisor);
+        satxmlsv33_cargaAtt($Cemisor, array(
+            "Curp" => false
+ 
+        ));
+        $domicilioE = true;  // indicamos si el nodo existirá dentro del XML (true= existe, false = se omite)
+        if ($domicilioE == true) {
+            $domicilioE = $xml->createElement("cce11:Domicilio");
+            $domicilioE = $Cemisor->appendChild($domicilioE);
+            satxmlsv33_cargaAtt($domicilioE, array(
+                "Calle" => $arr['complement_export']['issuer_street'],
+                "NumeroExterior" => false,
+                "Colonia" => false,
+                "Localidad" => false,
+                "Referencia" => false,
+                "Municipio" => false,
+                "Estado" => $arr['complement_export']['issuer_state'],
+                "Pais" => $arr['complement_export']['issuer_country'],
+                "CodigoPostal" => $arr['complement_export']['issuer_pc'],
+ 
+ 
+            ));
+        }
+    }
+ 
+    $Cpropietario = false; // indicamos si el nodo existirá dentro del XML (true= existe, false = se omite)
+    if ($Cpropietario == true) {
+        $Cpropietario = $xml->createElement("cce11:Propietario");
+        $Cpropietario = $cce11->appendChild($Cpropietario);
+        satxmlsv33_cargaAtt($Cpropietario, array(
+            "NumRegIdTrib" => false,
+            "ResidenciaFiscal" => false,
+ 
+        ));
+    }
+ 
+    $Creceptor = true; // indicamos si el nodo existirá dentro del XML (true= existe, false = se omite)
+    if ($Creceptor == true) {
+        $Creceptor = $xml->createElement("cce11:Receptor");
+        $Creceptor = $cce11->appendChild($Creceptor);
+        satxmlsv33_cargaAtt($Creceptor, array(
+            "NumRegIdTrib" => $arr['complement_export']['clients_register_number'],
+        ));
+ 
+ 
+        $domicilioR = $xml->createElement("cce11:Domicilio");
+        $domicilioR = $Creceptor->appendChild($domicilioR);
+        satxmlsv33_cargaAtt($domicilioR, array(
+            "Calle" => $arr['complement_export']['clients_street'],
+            "NumeroExterior" => false,
+            "Colonia" => false,
+            "Localidad" => false,
+            "Referencia" => false,
+            "Municipio" => false,
+            "Estado" => $arr['complement_export']['clients_state'],
+            "Pais" => $arr['complement_export']['clients_country'],
+            "CodigoPostal" => $arr['complement_export']['clients_pc'],
+ 
+        ));
+    }
+ 
+    $Cdestinatario = false; // indicamos si el nodo existirá dentro del XML (true= existe, false = se omite)
+    if ($Cdestinatario == true) {
+        $Cdestinatario = $xml->createElement("cce11:Destinatario");
+        $Cdestinatario = $cce11->appendChild($Cdestinatario);
+        satxmlsv33_cargaAtt($Cdestinatario, array(
+            "NumRegIdTrib" => "273156698",
+            "Nombre" => "Usuario",
+        ));
+        $domicilioD = $xml->createElement("cce11:Domicilio");
+        $domicilioD = $Cdestinatario->appendChild($domicilioD);
+        satxmlsv33_cargaAtt($domicilioD, array(
+            "Calle" => "Calle",
+            "NumeroExterior" => "943",
+            "Colonia" => false,
+            "Localidad" => "YUMA",
+            "Referencia" => false,
+            "Municipio" => "Imperial",
+            "Estado" => "AZ",
+            "Pais" => "USA",
+            "CodigoPostal" => "85365-0000",
+ 
+        ));
+    }
+ 
+    $Cmercancias = true; // indicamos si el nodo existirá dentro del XML (true= existe, false = se omite)
+    if ($Cmercancias == true) {
+        $Cmercancias = $xml->createElement("cce11:Mercancias");
+        $Cmercancias = $cce11->appendChild($Cmercancias);
+
+        for ($i=0; $i<count($arr['detalles']); $i++) {
+            $Cmercancia = $xml->createElement("cce11:Mercancia");
+            $Cmercancia = $Cmercancias->appendChild($Cmercancia);
+            satxmlsv33_cargaAtt($Cmercancia, array(
+                "NoIdentificacion" => $arr['complement_export_articles'][$i]['products_id'],
+                "FraccionArancelaria" => $arr['complement_export_articles'][$i]['products_tarrif_rate'],
+                "CantidadAduana" => $arr['complement_export_articles'][$i]['aduana_cuantity'],
+                "UnidadAduana" => $arr['complement_export_articles'][$i]['aduana_unity'],
+                "ValorUnitarioAduana" => $arr['complement_export_articles'][$i]['unitary_aduana_value'],
+                "ValorDolares" => $arr['complement_export_articles'][$i]['dollars_value'],
+                //"Unidad"=>$arr['complement_export_articles'][$i]['aduana_unity'],
+    
+            ));
+        }
+    }
+ 
+ 
+    $descripEspecificas = false; // indicamos si el nodo existirá dentro del XML (true= existe, false = se omite)
+    if ($descripEspecificas == true) {
+ 
+        $descripEspecificas = $xml->createElement("cce11:DescripcionesEspecificas");
+        $descripEspecificas = $Cmercancia->appendChild($descripEspecificas);
+        satxmlsv33_cargaAtt($descripEspecificas, array(
+            "Marca" => "23",
+            "Modelo" => "555",
+            "SubModelo" => "777",
+            "NumeroSerie" => "8",
+ 
+        ));
+    }
+}
+ 
+//Generamos el numero de certificado
+function no_Certificado()
+{
+    $cer = "../../resources/storage/shcp_files/CSD_Escuela_Kemper_Urgate_EKU9003173C9_20190617_131753s.cer"; //Ruta del archivo .cer
+    $noCertificado = shell_exec("openssl x509 -inform DER -in " . $cer . " -noout -serial");
+    $noCertificado = str_replace(' ', ' ', $noCertificado);
+    $arr1 = str_split($noCertificado);
+    $certificado = '';
+    for ($i = 7; $i < count($arr1); $i++) {
+        # code...
+        if ($i % 2 == 0) {
+            $certificado = ($certificado . ($arr1[$i]));
+        }
+    }
+    return $certificado;
+}
+ 
+ 
+// genera_cadena_original
+function satxmlsv33_genera_cadena_original() {
+global $xml, $cadena_original;
+$paso = new DOMDocument;
+$paso->loadXML($xml->saveXML());
+$xsl = new DOMDocument;
+$file="../../resources/storage/shcp_files/sat/cadenaoriginal_4_0.xslt";  // Ruta al archivo
+$xsl->load($file);
+$proc = new XSLTProcessor;
+$proc->importStyleSheet($xsl);
+$cadena_original = $proc->transformToXML($paso);
+$cadena_original = str_replace(array("\r", "\n"), '', $cadena_original);
+#echo $cadena_original;
+}
+// 
+ 
+// Calculo de sello
+function satxmlsv33_sello($arr) {
+global $root, $cadena_original, $sello;
+$certificado = no_Certificado();
+$file="../../resources/storage/shcp_files/llave.key.pem";      // Ruta al archivo
+// Obtiene la llave privada del Certificado de Sello Digital (CSD),
+//    Ojo , Nunca es la FIEL/FEA
+$pkeyid = openssl_get_privatekey(file_get_contents($file));
+openssl_sign($cadena_original, $crypttext, $pkeyid, OPENSSL_ALGO_SHA256);
+openssl_free_key($pkeyid);
+ 
+$file="../../resources/storage/shcp_files/certi.cer.pem";      // Ruta al archivo de Llave publica
+$datos = file($file);
+$certificado = ""; $carga=false;
+for ($i=0; $i<sizeof($datos); $i++) {
+    if (strstr($datos[$i],"END CERTIFICATE")) $carga=false;
+    if ($carga) $certificado .= trim($datos[$i]);
+    if (strstr($datos[$i],"BEGIN CERTIFICATE")) $carga=true;
+}
+
+/* ============================================================== */
+
+//$sello = base64_encode($crypttext);      // lo codifica en formato base64
+$file_key_password="12345678a"; // pendiente
+$file_key_path = "../../resources/storage/shcp_files/CSD_Escuela_Kemper_Urgate_EKU9003173C9_20190617_131753.key"; //Ruta del archivo .key
+$private_key=getPrivateKey($file_key_path,$file_key_password);
+
+$sello = signData3($private_key,$cadena_original,$file_key_path,$file_key_password);
+$root->setAttribute("Sello",$sello);
+
+$file_cer_path = "../../resources/storage/shcp_files/CSD_Escuela_Kemper_Urgate_EKU9003173C9_20190617_131753s.cer"; //Ruta del archivo .cer
+    
+$certificado=getCertificate($file_cer_path,false);
+// El certificado como base64 lo agrega al XML para simplificar la validacion
+$root->setAttribute("Certificado",$certificado);
+}
+ 
+ 
+// {{{ Termina, graba en edidata o genera archivo en el disco
+function satxmlsv33_termina($arr,$dir) {
+
+// Datos deben ser dinamicos desde $arr
+/* $arr['serie']="A";
+$arr['folio']="167ABC";  */
+global $xml, $conn;
+//$dir="../../resources/storage/xml/";
+$xml->formatOutput = true;
+$todo = $xml->saveXML();
+$nufa = $arr['serie'].$arr['folio'];    // Junta el numero de factura   serie + folio
+$paso = $todo;
+file_put_contents("../../resources/storage/xml/CFDI40.xml",$todo);
+ 
+    $xml->formatOutput = true;
+    $file=$dir.$nufa.".xml";
+    $xml->save($file);
+ //echo $arr['folio'];
+return($todo);
+}
+// {{{ Funcion que carga los atributos a la etiqueta XML
+function satxmlsv33_cargaAtt(&$nodo, $attr) {
+$quitar = array('Sello'=>1,'NoCertificado'=>1,'Certificado'=>1);
+foreach ($attr as $key => $val) {
+    $val = preg_replace('/\s\s+/', ' ', $val);   // Regla 5a y 5c
+    $val = trim($val);                           // Regla 5b
+    if (strlen($val)>0) {   // Regla 6
+        $val = utf8_encode(str_replace("|","/",$val)); // Regla 1
+        $nodo->setAttribute($key,$val);
+    }
+}
+}
+
+
+function getPrivateKey($key_path,$password,$to_string=true) {
+
+	$cmd='openssl pkcs8 -inform DER -in '.$key_path.' -passin pass:'.$password;
+
+	if($result=shell_exec($cmd)) {
+	unset($cmd);
+
+	if($to_string)
+	return $result;
+
+	$split=preg_split('/-*(END|\sKEY)-*\s/',$result);
+	unset($result);
+
+	 return preg_replace('/\n/','',$split[1]);
+
+	}
+}
+
+function signData3($key,$data,$key_path,$password) {
+    $path_tmp=dirname(__FILE__)."/tmp/";
+    //$data= utf8_encode($data);
+    $fp = fopen("/tmp/cadena_original.txt", "w");
+    fputs($fp, $data);
+    fclose($fp);
+
+    $key_path_pem="/tmp/key.pem";
+
+     // $cmd="openssl dgst -binary -sha256 -out ".$path_tmp."sign.bin.txt -sign ".KEY_PATH.$arr['prefijo'].'.key.pem'." ".$path_tmp."cadena_original.txt";
+    
+    $cmd='openssl pkcs8 -inform DER -in '.$key_path.' -passin pass:'.$password.' -out PEM -out /tmp/key.pem';
+    if ( $result = shell_exec( $cmd ) )
+    unset($cmd);
+
+    $cmd='openssl dgst -binary -sha256 -out /tmp/sign.bin.txt -sign '.$key_path_pem.' /tmp/cadena_original.txt';
+    if ( $result = shell_exec( $cmd ) )
+    unset($cmd);
+
+        # verificar la firma 
+      // $cmd="openssl dgst -sha256 -verify " .KEY_PATH.$arr['prefijo'].'.key.pem'." -signature ".$path_tmp."sign.bin.txt ".$path_tmp."cadena_original.txt";
+    //if ( $result = shell_exec( $cmd ) ) unset( $cmd );
+    # base64
+     $cmd="openssl enc -base64 -in /tmp/sign.bin.txt -a -A -out /tmp/sello.txt";
+        if ( $result = shell_exec( $cmd ) ) unset( $cmd );
+
+       $sign=file_get_contents("/tmp/sello.txt");
+        @unlink("/tmp/sign.bin.txt");
+        @unlink("/tmp/sello.txt");
+        @unlink("/tmp/key.pem");
+        @unlink("/tmp/cadena_original.txt");
+
+        return $sign;
+}
+
+function getCertificate($cer_path,$to_string=true) {
+
+    $cmd='openssl x509 -inform DER -outform PEM -in '.$cer_path.' -pubkey';
+
+    if($result=shell_exec($cmd)) {
+
+        unset($cmd);
+
+        if($to_string)
+         return $result;
+
+        $split=preg_split('/\n(-*(BEGIN|END)\sCERTIFICATE-*\n)/',$result);
+        unset($result);
+
+        return preg_replace('/\n/','',$split[1]);
+
+    }
+
+    return false;
+
+}
+?>

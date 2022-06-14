@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte20 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte20.xsd" xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" Version="4.0" Serie="ERT" Folio="607" Fecha="2022-03-02T11:18:34" Sello="Pj86oJO+OMLqTj/C0KWh+tH2Gk3yBiQiyOJo/XrXKyxQ+lWaBnvMEgKz9kUWK22ExVHz5FyNJeXO525yA22moh76pBuRlgKMPBveMRVfbPz2GEPXl8CAbE3aS8vmWlQgH+6cSvi46DxN3ZS915RHOF3qlO0S214lTqhHUdhDWj5fpIySCrxghgvBtMlDXdzVvSP2SeBNa817fP4Jibq33jBZPBpZiKC8GP45yTcLwgv/TmhqiMOI4kP1DRAi6M4mYCjh9seAtvUleRuIY8FoEZ0sqI79Zk+7RaZrvzougLPT7LpZYe38KUNHVM5YOrplKch2wIQ1YScgxUrR1V4hww==" NoCertificado="30001000000400002434" Certificado="MIIFuzCCA6OgAwIBAgIUMzAwMDEwMDAwMDA0MDAwMDI0MzQwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWRpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMTkwNjE3MTk0NDE0WhcNMjMwNjE3MTk0NDE0WjCB4jEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gWElRQjg5MTExNlFFNDEeMBwGA1UEBRMVIC8gWElRQjg5MTExNk1HUk1aUjA1MR4wHAYDVQQLExVFc2N1ZWxhIEtlbXBlciBVcmdhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCN0peKpgfOL75iYRv1fqq+oVYsLPVUR/GibYmGKc9InHFy5lYF6OTYjnIIvmkOdRobbGlCUxORX/tLsl8Ya9gm6Yo7hHnODRBIDup3GISFzB/96R9K/MzYQOcscMIoBDARaycnLvy7FlMvO7/rlVnsSARxZRO8Kz8Zkksj2zpeYpjZIya/369+oGqQk1cTRkHo59JvJ4Tfbk/3iIyf4H/Ini9nBe9cYWo0MnKob7DDt/vsdi5tA8mMtA953LapNyCZIDCRQQlUGNgDqY9/8F5mUvVgkcczsIgGdvf9vMQPSf3jjCiKj7j6ucxl1+FwJWmbvgNmiaUR/0q4m2rm78lFAgMBAAGjHTAbMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBCwUAA4ICAQBcpj1TjT4jiinIujIdAlFzE6kRwYJCnDG08zSp4kSnShjxADGEXH2chehKMV0FY7c4njA5eDGdA/G2OCTPvF5rpeCZP5Dw504RZkYDl2suRz+wa1sNBVpbnBJEK0fQcN3IftBwsgNFdFhUtCyw3lus1SSJbPxjLHS6FcZZ51YSeIfcNXOAuTqdimusaXq15GrSrCOkM6n2jfj2sMJYM2HXaXJ6rGTEgYmhYdwxWtil6RfZB+fGQ/H9I9WLnl4KTZUS6C9+NLHh4FPDhSk19fpS2S/56aqgFoGAkXAYt9Fy5ECaPcULIfJ1DEbsXKyRdCv3JY89+0MNkOdaDnsemS2o5Gl08zI4iYtt3L40gAZ60NPh31kVLnYNsmvfNxYyKp+AeJtDHyW9w7ftM0Hoi+BuRmcAQSKFV3pk8j51la+jrRBrAUv8blbRcQ5BiZUwJzHFEKIwTsRGoRyEx96sNnB03n6GTwjIGz92SmLdNl95r9rkvp+2m4S6q1lPuXaFg7DGBrXWC8iyqeWE2iobdwIIuXPTMVqQb12m1dAkJVRO5NdHnP/MpqOvOgLqoZBNHGyBg4Gqm4sCJHCxA1c8Elfa2RQTCk0tAzllL4vOnI1GHkGJn65xokGsaU4B4D36xh7eWrfj4/pgWHmtoDAYa8wzSwo2GVCZOs+mtEgOQB91/g==" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="T" Exportacion="01" LugarExpedicion="49000">
+  <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" UsoCFDI="S01" RegimenFiscalReceptor="601" DomicilioFiscalReceptor="49000"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="2" ClaveUnidad="E48" NoIdentificacion="000001" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="0.00" Importe="0.00" ObjetoImp="01"/>
+    <cfdi:Concepto ClaveProdServ="70141506" Cantidad="1" ClaveUnidad="E48" NoIdentificacion="000001" Unidad="pieza" Descripcion="POLVO TRADICIONAL" ValorUnitario="0.00" Importe="0.00" ObjetoImp="01"/>
+  </cfdi:Conceptos>
+  <cfdi:Complemento>
+    <cartaporte20:CartaPorte Version="2.0" TranspInternac="No" TotalDistRec="75.00">
+      <cartaporte20:Ubicaciones>
+        <cartaporte20:Ubicacion TipoUbicacion="Origen" RFCRemitenteDestinatario="MASO451221PM4" FechaHoraSalidaLlegada="2022-03-02 11:18:34">
+          <cartaporte20:Domicilio Calle="siempre viva" NumeroExterior="1412" Colonia="0001" Localidad="173" Municipio="1179" Estado="MIC" Pais="MEX" CodigoPostal="58000"/>
+        </cartaporte20:Ubicacion>
+        <cartaporte20:Ubicacion TipoUbicacion="Destino" RFCRemitenteDestinatario="MASO451221PM4" FechaHoraSalidaLlegada="2022-03-02 11:18:34" DistanciaRecorrida="75.00">
+          <cartaporte20:Domicilio Calle="siempre viva" NumeroExterior="1412" Colonia="0003" Localidad="173" Municipio="1179" Estado="MIC" Pais="MEX" CodigoPostal="58000"/>
+        </cartaporte20:Ubicacion>
+      </cartaporte20:Ubicaciones>
+      <cartaporte20:Mercancias PesoBrutoTotal="122" UnidadPeso="KGM" NumTotalMercancias="2">
+        <cartaporte20:Mercancia BienesTransp="70141506" Descripcion="POLVO TRADICIONAL" Cantidad="2" ClaveUnidad="E48" PesoEnKg="120" ValorMercancia="314" Moneda="MXN"/>
+        <cartaporte20:Mercancia BienesTransp="70141506" Descripcion="POLVO TRADICIONAL" Cantidad="1" ClaveUnidad="E48" PesoEnKg="2" ValorMercancia="157" Moneda="MXN"/>
+        <cartaporte20:Autotransporte PermSCT="0067776" NumPermisoSCT="0M654130N10528503L">
+          <cartaporte20:IdentificacionVehicular ConfigVehicular="C3" PlacaVM="POR DEFINIR" AnioModeloVM="2005"/>
+          <cartaporte20:Seguros AseguraRespCivil="QUALITAS COMPAÃIA DE SEGUROS" PolizaRespCivil="0640494720"/>
+        </cartaporte20:Autotransporte>
+      </cartaporte20:Mercancias>
+      <cartaporte20:FiguraTransporte>
+        <cartaporte20:TiposFigura TipoFigura="01" RFCFigura="CACJ750325E52" NumLicencia="HGO0012278"/>
+      </cartaporte20:FiguraTransporte>
+    </cartaporte20:CartaPorte>
+  </cfdi:Complemento>
+</cfdi:Comprobante>
